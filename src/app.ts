@@ -1,4 +1,5 @@
 import { getMovie } from "./getMovie";
+import { dataInterfaces } from "./utils/Interface";
 import { Movie } from "./utils/Type";
 
 const IMAGE_URL = "https://image.tmdb.org/t/p/w500";
@@ -27,9 +28,10 @@ function displayHtml(movie: Movie) {
 FORM?.addEventListener("submit", (e) => {
   e.preventDefault();
   const year: number = parseInt(YEAR_FORM.value, 10);
-  const data: Promise<any> = getMovie(year)!;
+  const data: Promise<dataInterfaces> = getMovie(year);
 
   data.then((data) => {
+    console.log(data);
     for (let index = 0; index < 3; index++) {
       displayHtml(data.results[index] as Movie);
     }
