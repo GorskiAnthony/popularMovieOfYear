@@ -1,4 +1,5 @@
 const path = require("path");
+const Dotenv = require("dotenv-webpack");
 
 module.exports = {
   mode: "development",
@@ -11,6 +12,10 @@ module.exports = {
         include: [path.resolve(__dirname, "src")],
       },
     ],
+  },
+  plugins: [new Dotenv()],
+  resolve: {
+    extensions: [".ts", ".js"],
   },
   output: {
     publicPath: "public",
